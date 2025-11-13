@@ -1,0 +1,40 @@
+# Git files
+.git
+.gitignore
+
+# GitHub
+.github/
+
+# Build artifacts
+dist/
+fl_limit
+fl_limit-*
+*.exe
+
+# Documentation
+*.md
+LICENSE
+
+# Editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test files
+*_test.go
+*.test
+
+# Docker files
+Dockerfile
+.dockerignore
+docker-compose*.yml
+
+# Build scripts
+build.sh
+Makefile
+
+# Temporary files
+*.tmp
+*.log
