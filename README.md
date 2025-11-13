@@ -8,7 +8,7 @@
 - 可配置的时间窗口和最大请求次数
 - 反向代理到上游服务
 - 健康检查端点
-- 多架构支持（amd64, arm64, 386, armv7）
+- Linux x86_64 支持
 
 ## GitHub Actions 自动构建和发布
 
@@ -27,21 +27,15 @@ git push origin v1.0.0
 ```
 
 2. **GitHub Actions 会自动**：
-   - 构建多个架构的 Linux 二进制文件
+   - 构建 Linux amd64 二进制文件
    - 创建压缩包
    - 生成 SHA256 校验和
    - 创建 GitHub Release
-   - 上传所有构建产物
-   - 构建并推送 Docker 镜像到 GitHub Container Registry
+   - 上传构建产物
 
 3. **查看发布结果**：
    - 访问项目的 Releases 页面查看发布的版本
-   - 下载对应架构的二进制文件
-
-### 支持的架构
-
-- `linux-amd64`：Linux x86_64（最常用）
-- `linux-arm64`：Linux ARM64（ARM 服务器）
+   - 下载 Linux amd64 二进制文件
 
 ## 本地构建
 
@@ -51,7 +45,7 @@ git push origin v1.0.0
 # 使用提供的构建脚本
 ./build.sh
 
-# 或手动构建特定架构
+# 或手动构建
 GOOS=linux GOARCH=amd64 go build -o fl_limit-linux-amd64 .
 ```
 

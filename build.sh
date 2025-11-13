@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 本地构建脚本 - 用于构建 Linux 二进制文件
+# 本地构建脚本 - 用于构建 Linux amd64 二进制文件
 
 set -e
 
@@ -66,19 +66,10 @@ build_binary() {
 }
 
 # 开始构建
-print_info "开始构建 Linux 二进制文件..."
+print_info "开始构建 Linux amd64 二进制文件..."
 
-# Linux amd64 (最常用)
+# Linux amd64
 build_binary "linux" "amd64" "" "fl_limit-linux-amd64"
-
-# Linux arm64
-build_binary "linux" "arm64" "" "fl_limit-linux-arm64"
-
-# Linux 386
-build_binary "linux" "386" "" "fl_limit-linux-386"
-
-# Linux arm v7 (树莓派等)
-build_binary "linux" "arm" "7" "fl_limit-linux-armv7"
 
 # 压缩文件
 print_info "压缩二进制文件..."
