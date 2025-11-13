@@ -22,7 +22,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.25.4'  # 根据你的 go.mod 调整版本
+          go-version: '1.21'  # 与 go.mod 保持一致
 
       # 获取版本号（从 tag 中提取）
       - name: Get version
