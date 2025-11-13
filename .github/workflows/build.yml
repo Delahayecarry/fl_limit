@@ -1,0 +1,51 @@
+name: Build
+
+# 在每次推送到主分支时构建（用于测试）
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 检出代码
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 设置 Go 环境
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25.4'
+
+      # 构建测试
+      - name: Build
+        run: |
+          echo "Building Linux amd64..."
+          GOOS=linux GOARCH=amd64 go build -o fl_limit-linux-amd64 -ldflags="-s -w" .
+
+          # 显示构建结果
+          ls -lah fl_limit-linux-amd64
+
+          echo "✅ Build successful!"
+
+      # 运行测试（如果有的话）
+      - name: Test
+        run: |
+          go test -v ./...
+
+      # 上传构建产物（可选，用于下载测试）
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: fl_limit-linux-amd64
+          path: fl_limit-linux-amd64
+          retention-days: 7  # 保留7天

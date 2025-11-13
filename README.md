@@ -12,7 +12,17 @@
 
 ## GitHub Actions 自动构建和发布
 
-本项目已配置 GitHub Actions，可以自动构建 Linux 二进制文件并发布到 GitHub Releases。
+本项目配置了两个GitHub Actions工作流：
+
+### 1. 自动构建测试（每次提交）
+- 文件：`.github/workflows/build.yml`
+- 触发条件：推送到master/main分支或PR
+- 功能：构建测试，不创建Release
+
+### 2. 版本发布（创建tag时）
+- 文件：`.github/workflows/release.yml`
+- 触发条件：推送版本tag（如v1.0.0）
+- 功能：构建、创建Release、上传二进制文件
 
 ### 如何触发自动发布
 
