@@ -1,0 +1,12 @@
+server:
+  listen: ":8080"                 # Go 中间件监听的地址和端口
+
+upstream:
+  url: "your-ip-or-domain"    # Xboard 面板后端地址（含协议和端口）
+
+path:
+  short_prefix: "/s/"             # 订阅短链前缀，对应 https://域名/s/{token}
+
+limit:
+  max: 5                        # 每个 token 在一个窗口内允许的最大请求次数（比如 10 次）
+  window: "24h"                   # 时间窗口，使用 Go 的 time.ParseDuration 格式：1h、24h、7h30m 等
